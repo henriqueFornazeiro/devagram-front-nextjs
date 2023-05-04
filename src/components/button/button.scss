@@ -1,0 +1,40 @@
+@mixin btn-primary{
+    background-color:$primaryColor2;
+    color:$white;
+}
+
+@mixin btn-primary-outline{
+    background-color:$white;
+    border:1px solid $primaryColor2;
+    color:$primaryColor2;
+}
+
+.btn{
+    width:100%;
+    border:none;
+    border-radius:6px;    
+    cursor:pointer;
+    
+    &.primary{
+        @include btn-primary;
+        
+        &:hover{
+            @include btn-primary-outline;
+        }
+
+    }
+
+    &.primary-outline{
+        @include btn-primary-outline;
+
+        &:hover{
+            @include btn-primary;
+        }
+
+    }
+    
+    &:disabled{
+        opacity: 0.5;
+    }
+
+}
