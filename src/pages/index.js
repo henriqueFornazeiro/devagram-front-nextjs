@@ -1,16 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Button from '../components/button'
-import Avatar from '../components/avatar'
-const inter = Inter({ subsets: ['latin'] })
+import Login from "../components/login";
 
-export default function Home() {
+export default function Index() {
+
   return (
-    <>
-      <h1>Ola mundo</h1>
-      <Avatar/>
-      <Button text={"Login"} color={"primary"} disabled={false}/>
+    <>      
+      <Login/>
     </>
   )
 }

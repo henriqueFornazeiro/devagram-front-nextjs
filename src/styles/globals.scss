@@ -2,7 +2,41 @@
 @import 'variables.scss';
 @import '../components/button/button.scss';
 @import '../components/avatar/avatar.scss';
+@import '../components/inputPublic/inputPublic.scss';
+@import './publicPage.scss';
+
 *{
   font-family: $fontRegular;
   font-size: 14px;
+  padding: 0;
+  margin:0;
+}
+
+html, body, #__next{
+  height:100%;
+
+}
+
+.avatar{
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.oculto{
+  display:none;
+}
+
+input{
+  &::placeholder{
+    color: $gray2;
+    opacity:1;
+  }
+  &:-ms-input-placeholder{
+    color: $gray2;
+    opacity:1;
+  }
+  &::-ms-input-placeholder{
+    color: $gray2;
+    opacity:1;
+  }
 }
