@@ -44,7 +44,7 @@ export default function Login() {
                 </form>
                 <div className="publicPageFooter">
                     <p>Não possui conta?</p>
-                    <Link href="/cadastro">Faça seu cadastro agora</Link>
+                    <Link href="/create">Faça seu cadastro agora</Link>
                 </div>
             </div>
         </section>
