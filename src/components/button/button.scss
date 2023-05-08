@@ -18,7 +18,7 @@
     &.primary{
         @include btn-primary;
         
-        &:hover{
+        &:hover:not(:disabled){
             @include btn-primary-outline;
         }
 
@@ -27,7 +27,7 @@
     &.primary-outline{
         @include btn-primary-outline;
 
-        &:hover{
+        &:hover:not(:disabled){
             @include btn-primary;
         }
 

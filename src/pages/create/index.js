@@ -9,6 +9,7 @@ import avatar from "../../../public/images/avatar.svg";
 import Button from "@/components/button";
 import InputPublic from "@/components/inputPublic";
 import UploadImage from "@/components/uploadImage";
+import {validateEmail,validatePass,validateName,validateConfirmPass} from "../../utils/validators"
 
 export default function Create() {
 
@@ -18,6 +19,12 @@ export default function Create() {
     const [password, setPassword]=useState("");
     const [confirmPassword, setConfirmPassword]=useState("");
 
+    const validateForm = () =>{
+      return (
+          validateEmail(email) && validatePass(password) && validateName(name) && validateConfirmPass(pass, confirmPassword)
+      );
+        
+    }
   return (
     <section className={`createPage publicPage`}>
       <div className="logoContainer desktop">
@@ -37,6 +44,8 @@ export default function Create() {
             type="text"
             handleChange={(e) => setName(e.target.value)}
             value={name}
+            message = "O nome precisa ter mais de 2 caracteres."
+            showMessage = {name && !validateName(name)}
           />
           <InputPublic
             image={emailIcon}
@@ -44,6 +53,8 @@ export default function Create() {
             type="email"
             handleChange={(e) => setEmail(e.target.value)}
             value={email}
+            message = "O e-mail informado é inválido."
+            showMessage = {email && !validateEmail(email)}
           />
           <InputPublic
             image={passIcon}
@@ -51,6 +62,8 @@ export default function Create() {
             type="password"
             handleChange={(e) => setPassword(e.target.value)}
             value={password}
+            message = "A senha precisa ter mais de 3 caracteres."
+            showMessage = {password && !validatePass(password)}
           />
           <InputPublic
             image={passIcon}
@@ -58,8 +71,10 @@ export default function Create() {
             type="password"
             handleChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
+            message = "As senhas não conferem."
+            showMessage = {confirmPassword && !validateConfirmPass(password, confirmPassword)}
           />
-          <Button text="Cadastrar" type="submit" disabled={false} />
+          <Button text="Cadastrar" type="submit" disabled={!validateForm(password,confirmPassword)} />
         </form>
         <div className="publicPageFooter">
           <p>Já possui conta?</p>

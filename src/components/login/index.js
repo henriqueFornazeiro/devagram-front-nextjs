@@ -6,11 +6,18 @@ import Button from "../button";
 import emailIcon from "../../../public/images/email.svg"
 import passIcon from "../../../public/images/key.svg"
 import logo from "../../../public/images/logo.svg"
+import {validateEmail,validatePass} from "../../utils/validators"
 
 export default function Login() {
 
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
+
+    const validateForm = () =>{
+        return (
+            validateEmail(email) && validatePass(password)
+        );
+    }
 
     return (
         <section className={`loginPage publicPage`}>
@@ -28,6 +35,8 @@ export default function Login() {
                     type="email"
                     handleChange={e =>setEmail(e.target.value)}
                     value = {email}
+                    message = "O e-mail informado é inválido."
+                    showMessage = {email && !validateEmail(email)}
                    />
                    <InputPublic 
                     image={passIcon}
@@ -35,11 +44,13 @@ export default function Login() {
                     type="password"
                     handleChange={e =>setPassword(e.target.value)}
                     value = {password}
+                    message = "A senha precisa ter pelo menos 3 caracteres."
+                    showMessage = {password && !validatePass(password)}
                    />
                    <Button 
                     text="Login"
                     type="submit"
-                    disabled={false}
+                    disabled={!validateForm()}
                    />
                 </form>
                 <div className="publicPageFooter">

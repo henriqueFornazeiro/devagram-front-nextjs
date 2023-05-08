@@ -65,3 +65,11 @@ input{
   }
   
 }
+
+.validationMessage{
+  display:block;
+  color:$redMessage; 
+  font-size:90%;
+  margin-top:-20px;
+  margin-bottom:15px;
+}
