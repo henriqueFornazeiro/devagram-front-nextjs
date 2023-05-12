@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import UserService from "@/services/UserService"
 import { useRouter } from "next/router";
@@ -17,6 +18,7 @@ export default function withAuth(Component){
                 <>
                     <Header/>
                     <Component {...props}/>
+                    <Footer/>
                 </>              
             )
         }

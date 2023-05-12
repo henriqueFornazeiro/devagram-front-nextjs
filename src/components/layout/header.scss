@@ -1,0 +1,81 @@
+.headerMain{
+    border-bottom: 0.5px solid $gray;
+
+    .headerMainContent{
+        display: flex;
+        padding: 8px 16px;
+        .logoHeaderMain{
+            position: relative;
+            width: 140px;
+            height: 35px;
+        }
+
+        .searchBar{
+            position: relative;
+            flex:1;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+
+            .containerImgSearch{
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                left: 8px;
+            }
+
+            input{
+                background-color: $primaryColor4;
+                border: none;
+                border-radius: 4px;
+                outline:none;
+                font-size: 12px;
+                padding: 8px 8px 8px 36px;
+                font-family: $fontLight;
+                color:$primaryColor2;
+                &:focus{
+                    outline:0.5px solid $primaryColor2;
+                }
+            }
+
+
+        }
+
+    }
+
+    @media screen and (min-width:$desktopBreakpoint) {
+        background-color: $white;
+        border: none;
+
+        .headerMainContent{
+            max-width: 60%;
+            margin:0 auto;
+            align-items: center;
+            justify-content: center;
+
+            .logoHeaderMain{
+                width: 180px;
+                height: 37px;
+            }
+
+            .searchBar{
+                flex:0.6;
+                margin:0px 5px 0px 30px;
+                
+                input{
+                    width: 100%;
+                }
+            }
+
+            .navbar{
+                ul{
+                    li{
+                        margin:0px 0px 0px 20px;
+                    }
+                }
+            }
+
+        }
+    }
+
+}
