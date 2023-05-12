@@ -11,7 +11,7 @@ import UserService from "@/services/UserService";
 
 const userService = new UserService();
 
-export default function Login() {
+export default function Login({posAuth}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmited, setIsSubmited] = useState(false);
@@ -34,7 +34,11 @@ export default function Login() {
         login: email,
         password,
       });
-      alert("Login feito com sucesso");
+      
+      if(posAuth){
+        posAuth()
+      }
+
     } catch (e) {
       alert("Não foi fazer login: " + e?.response?.data?.error);
     }

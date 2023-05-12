@@ -16,6 +16,7 @@ import {
   validateConfirmPass,
 } from "../../utils/validators";
 import UserService from "@/services/UserService";
+import { useRouter } from "next/router";
 
 const userService = new UserService();
 
@@ -26,6 +27,7 @@ export default function Create() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isSubmited, setIsSubmited] = useState(false);
+  const router = useRouter();
 
   const validateForm = () => {
     return (
@@ -37,7 +39,6 @@ export default function Create() {
   };
 
   const onSubmitForm = async (e) => {
-    
     e.preventDefault();
     if (!validateForm()) {
       return;
@@ -51,16 +52,17 @@ export default function Create() {
       bodyReqCreate.append("email", email);
       bodyReqCreate.append("password", password);
 
-      if (image?.arquivo) {        
+      if (image?.arquivo) {
         bodyReqCreate.append("file", image.arquivo);
       }
 
       await userService.create(bodyReqCreate);
-
-      alert("Sucesso! Usuário criado");
-
+      await userService.login({ login: email, password });
+      router.push("/");
     } catch (e) {
-      alert("Não foi possível cadastrar o usuário: " + e?.response?.data?.error);
+      alert(
+        "Não foi possível cadastrar o usuário: " + e?.response?.data?.error
+      );
     }
 
     setIsSubmited(false);
