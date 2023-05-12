@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import UserService from "@/services/UserService"
 import { useRouter } from "next/router";
 
@@ -12,7 +13,12 @@ export default function withAuth(Component){
                 return null
             }
             
-            return <Component {...props}/>
+            return (
+                <>
+                    <Header/>
+                    <Component {...props}/>
+                </>              
+            )
         }
 
         return null
