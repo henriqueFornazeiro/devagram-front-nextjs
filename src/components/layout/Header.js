@@ -4,40 +4,42 @@ import imgLupa from "../../../public/images/search.svg";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import SearchResult from "./SearchResult";
+import UserService from "@/services/UserService";
+import { useRouter } from "next/router";
+
+const userService = new UserService();
 
 export default function Header() {
   const [result, setResult] = useState([]);
   const [searchParameter, setSearchParameter] = useState([]);
+  const router = useRouter();
 
-  const handleSearchInput =(e)=>{
+  const handleSearchInput = async (e) => {
     setSearchParameter(e.target.value);
     setResult([]);
 
-    if(searchParameter.length<3){
-        return
+    if (searchParameter.length < 3) {
+      return;
     }
-    setResult([{
-        avatar:'',
-        name:"Henrique",
-        email:'henrique@email.com',
-        _id:'12345'
-    },{
-        avatar:'',
-        name:"Patolino",
-        email:'patolino@email.com',
-        _id:'1234'
-    },{
-        avatar:'',
-        name:"Taz",
-        email:'taz@email.com',
-        _id:'125'
-    }])
-  }
+
+    try {
+      const { data } = await userService.search(searchParameter);
+      
+      setResult(data);
+    } catch (e) {
+      alert(
+        "Não foi possível realizar a pesquisa de usuário: " +
+          e?.response?.data?.error
+      );
+    }
+  };
 
   const handleClickSearchResult = (id) => {
-    console.log("click", { id });
-    
+    setSearchParameter("");
+    setResult([]);
+    router.push(`/profile/${id}`);
   };
+
   return (
     <header className="headerMain">
       <div className="headerMainContent">

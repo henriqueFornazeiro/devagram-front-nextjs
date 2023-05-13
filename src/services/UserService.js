@@ -18,6 +18,10 @@ export default class UserService extends HttpService {
     return this.post("/create", data);
   }
 
+  async search(searchParameter) {
+    return this.get("/search?filter="+searchParameter);
+  }
+
   isAuthenticated() {
     return localStorage.getItem("token") !== null;
   }
