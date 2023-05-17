@@ -25,4 +25,13 @@ export default class UserService extends HttpService {
   isAuthenticated() {
     return localStorage.getItem("token") !== null;
   }
+  
+  getUserLoggedInfo(){
+    return {
+        id: localStorage.getItem('id'),
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email'),
+        avatar: localStorage.getItem('avatar')
+    }
+}
 }

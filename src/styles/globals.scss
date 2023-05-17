@@ -5,6 +5,7 @@
 @import '../components/inputPublic/inputPublic.scss';
 @import '../components/layout/header.scss';
 @import '../components/layout/footer.scss';
+@import '../components/feed/feed.scss';
 @import '../pages/create/create.scss';
 @import './publicPage.scss';
 
@@ -18,6 +19,13 @@
 html, body, #__next{
   height:100%;
 
+}
+
+body{
+  @media screen and (min-width:$desktopBreakpoint){
+    background-color: $gray5;
+    background-image: url('../../public/images/background-desktop.svg');
+  }
 }
 
 .avatar{
@@ -91,4 +99,11 @@ input{
 
 strong{
   font-family: $fontBold;
+}
+
+.width30pctDesktop{
+  @media screen and (min-width:$desktopBreakpoint) {
+    width: 35%;
+    margin: 16px auto;
+  }
 }

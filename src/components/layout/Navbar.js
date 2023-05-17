@@ -47,7 +47,6 @@ export default function Navbar({ className }) {
       setActiveRoute(routerMapsKey[activeIndex]);
     }
 
-    console.log(activeRoute);
   };
 
   const getImage = (routeName) => {

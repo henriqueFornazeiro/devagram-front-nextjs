@@ -1,0 +1,82 @@
+.feedContainer{
+    padding-bottom: 60px;
+    background-color: $white;
+    margin-top: 16px;
+
+    .post{        
+        margin-bottom: 16px;
+        a{
+            text-decoration: none;
+        }
+
+        .postHeader{
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            text-decoration: none;
+            margin-bottom: 8px;
+            .avatar{
+                height: 32px;
+                width: 32px;
+                margin-right: 8px;
+            }
+
+            strong{
+                font-size: 12px;                
+                color: $gray4;                
+            }
+
+        }
+
+        .postImage{
+            img{
+                width: 100%;
+                height: auto;
+                max-height: 360px;
+                object-fit: cover;
+            }
+        }
+
+        .postFooter{
+            padding: 5px 16px;
+            color: $gray4;
+            strong.postUser{
+                font-size: 12px;
+                               
+                float: left;
+                margin-right: 5px;
+                margin-top: 3px;
+            }
+
+            p.description{
+                font-size: 14px;
+                font-family: $fontLight;
+                margin: 0 0 2px;
+            }
+
+            .postActions{
+                display: flex;
+                align-items: center;
+                gap:12px;
+                margin-bottom: 10px;
+
+                .likesCount{
+                    font-family: $fontLight;
+                    font-size: 10px;
+                    color: $gray4;
+                    strong{
+                       
+                        font-size: 10px;
+                    }
+                }
+            }
+
+            
+        }
+        
+    }
+
+    @media screen and (min-width:$desktopBreakpoint) {
+        padding-top:8px;
+    }
+}

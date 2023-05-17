@@ -13,12 +13,14 @@ export default function withAuth(Component){
                 router.replace("/");
                 return null
             }
+
+            const userLoggedInfo = userService.getUserLoggedInfo();
             
             return (
                 <>
-                    <Header/>
-                    <Component {...props}/>
-                    <Footer/>
+                    <Header userLogged={userLoggedInfo}/>
+                    <Component userLogged={userLoggedInfo} {...props}/>
+                    <Footer userLogged={userLoggedInfo}/>
                 </>              
             )
         }

@@ -24,7 +24,7 @@ export default function Header() {
 
     try {
       const { data } = await userService.search(searchParameter);
-      
+
       setResult(data);
     } catch (e) {
       alert(
@@ -40,11 +40,20 @@ export default function Header() {
     router.push(`/profile/${id}`);
   };
 
+  const redirectToHome = () => {
+    router.push("/");
+  };
+
   return (
     <header className="headerMain">
       <div className="headerMainContent">
         <div className="logoHeaderMain">
-          <Image src={logoHorizontal} alt="logo devagram" layout="fill" />
+          <Image
+            onClick={redirectToHome}
+            src={logoHorizontal}
+            alt="logo devagram"
+            layout="fill"
+          />
         </div>
         <div className="searchBar">
           <div className="containerImgSearch">
