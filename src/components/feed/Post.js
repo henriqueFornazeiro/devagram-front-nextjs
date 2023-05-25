@@ -4,8 +4,36 @@ import Image from "next/image";
 import iconLike from "../../../public/images/heart-outlined.svg"
 import iconLiked from "../../../public/images/heart-filled.svg"
 import iconComment from "../../../public/images/message-circle.svg"
+import { useState } from "react";
+import { Comment } from "./Comment";
 
-export default function Post({image, user,comments,description}){
+const tamanhoLimiteDescricao = 90;
+
+export default function Post({image, user,comments,description,userLogged}){
+    
+    const [showCommentContainer, setShowCommentContainer] = useState(false);
+
+    const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
+        tamanhoLimiteDescricao
+    );
+
+    const exibirDescricaoCompleta = () => {
+        setTamanhoAtualDaDescricao(Number.MAX_SAFE_INTEGER);
+    }
+
+    const descricaoMaiorQueLimite = () => {
+        return description.length > tamanhoAtualDaDescricao;
+    }
+
+    const obterDescricao = () => {
+        let mensagem = description.substring(0, tamanhoAtualDaDescricao);
+        if (descricaoMaiorQueLimite()) {
+            mensagem += '...';
+        }
+
+        return mensagem;
+    }
+
     return(
         <>
         <div className="post">
@@ -33,7 +61,7 @@ export default function Post({image, user,comments,description}){
                         alt="Icone da ação de comentário"
                         width={20}
                         height={20}
-                        onClick={()=>{console.log('comentar')}}
+                        onClick={() => setShowCommentContainer(!showCommentContainer)}
                     />
                     <span className="likesCount">
                         Curtido por <strong>10 pessoas</strong>
@@ -42,8 +70,16 @@ export default function Post({image, user,comments,description}){
                 <section className="postDescription">
                     <strong className="postUser">{user.name}</strong>
                     <p className="description">
-                        {description}
+                        {obterDescricao()}
+                        {descricaoMaiorQueLimite() && (
+                            <span
+                                onClick={exibirDescricaoCompleta}
+                                className="exibirDescricaoCompleta">
+                                mais
+                            </span>
+                        )}
                     </p>
+                    
                 </section>
                 <section className="postComments">
                     {
@@ -56,6 +92,9 @@ export default function Post({image, user,comments,description}){
                     }
                 </section>
             </div>
+            {showCommentContainer &&
+                <Comment userLogged={userLogged} />
+            }
         </div>
         </>
     )

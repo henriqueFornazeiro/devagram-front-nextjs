@@ -8,14 +8,14 @@ export default function Feed({userLogged}){
         console.log("carregar feed");
         setPostList([
             {
-                id:'2',
+                id:'1',
                 user:{
                     id:'1',
                     name:'Joao',
                     avatar:null
                 },
                 image: 'https://cdn.cosmicjs.com/2bb0e740-f4c2-11ed-bb44-790a83f99a24-122391577_1517615238429459_2934071392890602250_n.jpg',
-                description:'It is a long established fact that a reader will be distracted by the readable content',
+                description:'It is a long established fact that a reader will be distracted by the readable content. It is a long established fact that a reader will be distracted by the readable content',
                 likes:[],
                 comments:[
                     {
@@ -30,7 +30,8 @@ export default function Feed({userLogged}){
                         name:'Fulano de Tal',
                         comment:'Muito legal'
                     }
-                ]
+                ],
+                userLogged: userLogged
             },
             {
                 id:'2',
@@ -47,7 +48,8 @@ export default function Feed({userLogged}){
                         name:'João',
                         comment:'Muito legal'
                     }
-                ]
+                ],
+                userLogged: userLogged
             }
         ])
     },[userLogged])
