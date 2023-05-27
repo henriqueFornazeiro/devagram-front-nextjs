@@ -9,4 +9,9 @@ export default class FeedService extends HttpService{
         }
         return this.get(url)
     }
+
+    async addComment(postId, comment){
+        return this.put(`/comment?id=${postId}`,{comment})
+
+    }
 }
