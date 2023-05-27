@@ -33,7 +33,7 @@ export default function Post({image, user,comments,description,userLogged}){
 
         return mensagem;
     }
-
+    
     return(
         <>
         <div className="post">

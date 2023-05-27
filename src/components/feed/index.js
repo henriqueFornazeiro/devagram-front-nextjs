@@ -1,67 +1,42 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import Post from "./Post";
+import FeedService from "@/services/FeedService";
 
-export default function Feed({userLogged}){
-    const [postList, setPostList] = useState([]);
+const feedService = new FeedService();
 
-    useEffect(()=>{
-        console.log("carregar feed");
-        setPostList([
-            {
-                id:'1',
-                user:{
-                    id:'1',
-                    name:'Joao',
-                    avatar:null
-                },
-                image: 'https://cdn.cosmicjs.com/2bb0e740-f4c2-11ed-bb44-790a83f99a24-122391577_1517615238429459_2934071392890602250_n.jpg',
-                description:'It is a long established fact that a reader will be distracted by the readable content. It is a long established fact that a reader will be distracted by the readable content',
-                likes:[],
-                comments:[
-                    {
-                        name:'Fulano',
-                        comment:'Muito legal'
-                    },
-                    {
-                        name:'Ciclano',
-                        comment:'Muito legal'
-                    },
-                    {
-                        name:'Fulano de Tal',
-                        comment:'Muito legal'
-                    }
-                ],
-                userLogged: userLogged
-            },
-            {
-                id:'2',
-                user:{
-                    id:'2',
-                    name:'Fulano',
-                    avatar:null
-                },
-                image: 'https://cdn.cosmicjs.com/2bb0e740-f4c2-11ed-bb44-790a83f99a24-122391577_1517615238429459_2934071392890602250_n.jpg',
-                description:'It is a long established fact that a reader will be distracted by the readable content',
-                likes:[],
-                comments:[
-                    {
-                        name:'João',
-                        comment:'Muito legal'
-                    }
-                ],
-                userLogged: userLogged
-            }
-        ])
-    },[userLogged])
+export default function Feed({ userLogged }) {
+  const [postList, setPostList] = useState([]);
 
+  useEffect(() => {
+    async function func() {
+      const { data } = await feedService.loadPosts();
 
-    return (
-        <>
-            <div className="feedContainer width30pctDesktop">
-                {postList.map(dataPost => (
-                    <Post key={dataPost.id} {...dataPost}/>
-                ))}
-            </div>
-        </>
-    )
+      const postFormatted = data.map((post) => ({
+        id: post._id,
+        user: {
+          id: post.userId,
+          name: post.usuario.name,
+          avatar: post.usuario.avatar,
+        },
+        image: post.image,
+        description: post.description,
+        likes: post.likes,
+        comments: post.comments,
+      }));
+
+      setPostList(postFormatted);
+    }
+
+    func();
+  }, [userLogged]);
+
+  return (
+    <>
+      <div className="feedContainer width30pctDesktop">
+        {postList.map((dataPost) => (
+          <Post key={dataPost.id} {...dataPost} userLogged={userLogged} />
+        ))}
+      </div>
+    </>
+  );
 }

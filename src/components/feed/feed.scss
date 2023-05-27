@@ -122,14 +122,14 @@
             .commentContainer {
                 margin-top: 12px;
 
-                // .btnPublicacao {
-                //     background-color: transparent;
-                //     color: $primaryColor2;
-                //     outline: none;
-                //     border: none;
-                //     font-size: 12px;
-                //     cursor: pointer;
-                // }
+                .btnPublish {
+                    background-color: transparent;
+                    color: $primaryColor2;
+                    outline: none;
+                    border: none;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
             }
         }
     }

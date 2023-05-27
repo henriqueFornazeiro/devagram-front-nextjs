@@ -9,9 +9,12 @@ export default class UserService extends HttpService {
     localStorage.setItem("token", data.token);
 
     const user = await this.get("/user");
-
+    
     localStorage.setItem("id", user.data._id);
-    if (user.data.avatar) localStorage.setItem("avatar:", user.data.avatar);
+
+    if (user.data.avatar) {      
+      localStorage.setItem("avatar", user.data.avatar);
+    }
   }
 
   async create(data) {
@@ -19,19 +22,19 @@ export default class UserService extends HttpService {
   }
 
   async search(searchParameter) {
-    return this.get("/search?filter="+searchParameter);
+    return this.get("/search?filter=" + searchParameter);
   }
 
   isAuthenticated() {
     return localStorage.getItem("token") !== null;
   }
-  
-  getUserLoggedInfo(){
+
+  getUserLoggedInfo() {
     return {
-        id: localStorage.getItem('id'),
-        name: localStorage.getItem('name'),
-        email: localStorage.getItem('email'),
-        avatar: localStorage.getItem('avatar')
-    }
-}
+      id: localStorage.getItem("id"),
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
+      avatar: localStorage.getItem("avatar"),
+    };
+  }
 }

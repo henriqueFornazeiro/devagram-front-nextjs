@@ -2,7 +2,7 @@
 import Avatar from "../avatar";
 
 export function Comment({ userLogged}) {
-    console.log(userLogged)
+    
     return (
         <div className="commentContainer">
             <Avatar src={userLogged.avatar} />
@@ -11,13 +11,13 @@ export function Comment({ userLogged}) {
                 placeholder="Adicione um comentario...">
             </textarea>
 
-            {/* <button
+            <button
                 type="button"
-                className="btnPublicacao desktop"
-                onClick={fazerComentario}
+                className="btnPublish desktop"
+                // onClick={fazerComentario}
             >
                 Publicar
-            </button> */}
+            </button>
         </div>
     )
 }
