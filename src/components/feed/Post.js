@@ -19,7 +19,9 @@ export default function Post({
   comments,
   description,
   userLogged,
+  likes
 }) {
+  const [likesPost, setLikesPost] = useState(likes);
   const [commentsPost, setCommentPost] = useState(comments);
   const [showCommentContainer, setShowCommentContainer] = useState(false);
   const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
@@ -63,6 +65,33 @@ export default function Post({
     }
   };
 
+  const handleLike = async () =>{
+    try {
+      await feedService.like(id);
+      
+      if(userLikedPost()){
+        setLikesPost(
+          likesPost.filter(userIdLiked => userIdLiked !== userLogged.id)
+        )
+      }else{
+        setLikesPost([
+          ...likesPost,
+          userLogged.id
+        ])
+      }
+    } catch (e) {
+      alert(`Erro ao alterar curtida. ${(e?.response?.data?.error || "")}`);
+    }
+  }
+
+  const userLikedPost = () => {
+    return likesPost.includes(userLogged.id);
+  }
+
+  const getIconLike = () => {
+    return userLikedPost() ? iconLiked : iconLike;
+  };
+
   return (
     <>
       <div className="post">
@@ -78,13 +107,11 @@ export default function Post({
         <div className="postFooter">
           <section className="postActions">
             <Image
-              src={iconLike}
+              src={getIconLike()}
               alt="Icone da ação de curtir"
               width={20}
               height={20}
-              onClick={() => {
-                console.log("curtir");
-              }}
+              onClick={handleLike}
             />
             <Image
               src={getCommentIcon()}
@@ -94,7 +121,7 @@ export default function Post({
               onClick={() => setShowCommentContainer(!showCommentContainer)}
             />
             <span className="likesCount">
-              Curtido por <strong>10 pessoas</strong>
+              Curtido por <strong>{likesPost.length} pessoas</strong>
             </span>
           </section>
           <section className="postDescription">

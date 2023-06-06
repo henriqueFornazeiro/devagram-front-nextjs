@@ -41,7 +41,7 @@ export function Comment({ userLogged, toComment }) {
       <button
         type="button"
         className="btnPublish desktop"
-        // onClick={fazerComentario}
+        onClick={handleComment}
       >
         Publicar
       </button>
