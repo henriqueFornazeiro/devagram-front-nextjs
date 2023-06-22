@@ -14,6 +14,11 @@ export default function Header() {
   const [searchParameter, setSearchParameter] = useState([]);
   const router = useRouter();
 
+  let headerClassName = '';
+  if(window && window.location.pathname !== "/"){
+    headerClassName = "desktop";
+  }
+
   const handleSearchInput = async (e) => {
     setSearchParameter(e.target.value);
     setResult([]);
@@ -45,7 +50,7 @@ export default function Header() {
   };
 
   return (
-    <header className="headerMain">
+    <header className={`headerMain ${headerClassName}`}>
       <div className="headerMainContent">
         <div className="logoHeaderMain">
           <Image
