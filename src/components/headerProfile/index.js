@@ -10,6 +10,7 @@ export default function HeaderProfile({
     return(
         <div className="headerProfile width30pctDesktop">
             <HeaderAction iconLeft={iconChevronLeft} title={user.name}/> 
+            <hr className="headerProfileBorder"/>
             <div className="info">
                 <Avatar src={user.avatar} />
                 <div className="infoContainer">

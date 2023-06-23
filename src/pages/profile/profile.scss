@@ -55,4 +55,43 @@
 
         }
     }
+
+    @media screen and (min-width:$desktopBreakpoint) {
+        .headerProfile{
+            .headerWithAction{
+                h3{
+                    font-size: 18px;
+                }
+
+                >img{
+                    display: none !important;
+                }
+            }
+
+            .headerProfileBorder{
+                margin: 0 auto;
+                border: none;
+                background-color: $gray1;
+                height: 1px;
+                width: 90%;
+            }
+
+            .info{
+                .avatar{
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .infoContainer{
+                    .btn{
+                        padding: 8px;
+                    }
+                }
+            }
+            
+        }   
+        
+        
+        
+    }
 }
