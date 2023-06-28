@@ -2,6 +2,15 @@
     
     .headerProfile{
         background-color: $white;
+
+        .headerProfileBorder{
+            margin: 0;
+            border: none;
+            background-color: $gray1;
+            height: 1px;
+        }
+
+
         .info{
             display: flex;
             align-items: center;
@@ -69,10 +78,7 @@
             }
 
             .headerProfileBorder{
-                margin: 0 auto;
-                border: none;
-                background-color: $gray1;
-                height: 1px;
+                margin: 0 auto;                
                 width: 90%;
             }
 

@@ -25,6 +25,14 @@ export default class UserService extends HttpService {
     return this.get("/search?filter=" + searchParameter);
   }
 
+  async getUserProfile(userId){
+    return this.get("/search?id=" + userId);
+  }
+
+  async toggleFollow(userId){
+    return this.put(`/follow?id=${userId}`)
+  }
+
   isAuthenticated() {
     return localStorage.getItem("token") !== null;
   }
@@ -37,4 +45,6 @@ export default class UserService extends HttpService {
       avatar: localStorage.getItem("avatar"),
     };
   }
+
+  
 }

@@ -4,19 +4,19 @@ import FeedService from "@/services/FeedService";
 
 const feedService = new FeedService();
 
-export default function Feed({ userLogged }) {
+export default function Feed({ userLogged, userProfile }) {
   const [postList, setPostList] = useState([]);
 
   useEffect(() => {
     async function func() {
-      const { data } = await feedService.loadPosts();
-
+      const { data } = await feedService.loadPosts(userProfile?._id);
+      
       const postFormatted = data.map((post) => ({
         id: post._id,
         user: {
           id: post.userId,
-          name: post.usuario.name,
-          avatar: post.usuario.avatar,
+          name: post?.usuario?.name || userProfile?.name,
+          avatar: post?.usuario?.avatar || userProfile?.avatar,
         },
         image: post.image,
         description: post.description,
@@ -28,14 +28,20 @@ export default function Feed({ userLogged }) {
     }
 
     func();
-  }, [userLogged]);
+  }, [userLogged, userProfile]);
+
+  if(!postList.length){
+    return null;
+  }
 
   return (
     <>
       <div className="feedContainer width30pctDesktop">
+        
         {postList.map((dataPost) => (
-          <Post key={dataPost.id} {...dataPost} userLogged={userLogged} />
-        ))}
+              <Post key={dataPost.id} {...dataPost} userLogged={userLogged} />
+            ))
+        }
       </div>
     </>
   );
