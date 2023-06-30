@@ -22,7 +22,7 @@ const routerMaps = {
   userProfile: {
     imgActive: iconUserActive,
     imgMain: iconUser,
-    routes: ["/profile/me", "/profile/me/edit"],
+    routes: ["/profile/me", "/profile/edit"],
   },
 };
 

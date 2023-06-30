@@ -14,11 +14,20 @@ function Profile({userLogged}) {
 
   const getProfile = async (userId) => {
     try {
-      const {data} = await userService.getUserProfile(userId);
+
+      const {data} = await userService.getUserProfile(
+        userId === "me" ? userLogged.id : userId
+      );
+
+
       return data;
     } catch (error) {
       alert(`Erro ao obter perfil do usuário! (${error})`);
     }
+  }
+
+  const isProfileUserLogged = () =>{
+    return router.query.id == "me"
   }
 
   useEffect( ()=>{
@@ -38,7 +47,7 @@ function Profile({userLogged}) {
   return (
     <>    
       <div className="profilePage">        
-        <HeaderProfile userLogged={userLogged} user={user}/>     
+        <HeaderProfile userLogged={userLogged} user={user} isProfileUserLogged={isProfileUserLogged()}/>     
         <Feed userLogged={userLogged} userProfile={user}/>
       </div>
     </>

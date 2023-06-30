@@ -9,6 +9,7 @@ export default function Feed({ userLogged, userProfile }) {
 
   useEffect(() => {
     async function func() {
+      setPostList([]);
       const { data } = await feedService.loadPosts(userProfile?._id);
       
       const postFormatted = data.map((post) => ({
