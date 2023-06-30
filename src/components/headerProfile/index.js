@@ -1,10 +1,12 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import HeaderAction from "../headerActions";
 import iconChevronLeft from '../../../public/images/chevron-left.svg'
+import iconLogout from '../../../public/images/log-out.svg'
 import Avatar from "../avatar";
 import Button from "../button";
-import { useEffect, useState } from "react";
 import UserService from "@/services/UserService";
-import { useRouter } from "next/router";
 
 const userService = new UserService();
 
@@ -74,9 +76,39 @@ export default function HeaderProfile({
         router.back();
     }
 
+    const logout = () =>{
+        userService.logout();
+        router.replace("/");
+    }
+
+    const getElementLogout = () => {
+        if(isProfileUserLogged){
+            return (
+                
+                <Image
+                    src={iconLogout}
+                    alt="icone de fazer logout do usuário atual"
+                    onClick={logout}
+                    width={23}
+                    height={23}
+                />
+                
+            )
+        }
+
+        return null;
+    }
+
     return(
         <div className="headerProfile width30pctDesktop">
-            < HeaderAction iconLeft={isProfileUserLogged ? null : iconChevronLeft} title={user.name} handleClick={handleClickLeft}/> 
+            < HeaderAction 
+                iconLeft={isProfileUserLogged ? null : iconChevronLeft} 
+                title={user.name} 
+                handleClick={handleClickLeft}
+                rightElement={
+                    getElementLogout()
+                }
+            /> 
             <hr className="headerProfileBorder"/>
             <div className="info">
                 <Avatar src={user.avatar} />

@@ -17,6 +17,14 @@ export default class UserService extends HttpService {
     }
   }
 
+  async logout(){
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("avatar");
+  }
+
   async create(data) {
     return this.post("/create", data);
   }

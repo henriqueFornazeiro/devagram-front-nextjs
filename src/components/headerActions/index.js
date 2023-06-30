@@ -25,7 +25,7 @@ export default function HeaderAction({
 
             {
                 rightElement && (
-                    <button type="buton">{rightElement}</button>
+                    <button type="buton" className="btnRightElement">{rightElement}</button>
                 )
             }
         </div>

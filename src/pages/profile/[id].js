@@ -47,7 +47,7 @@ function Profile({userLogged}) {
   return (
     <>    
       <div className="profilePage">        
-        <HeaderProfile userLogged={userLogged} user={user} isProfileUserLogged={isProfileUserLogged()}/>     
+        <HeaderProfile userLogged={userLogged} user={user} isProfileUserLogged={isProfileUserLogged() || userLogged.id == router.query.id}/>     
         <Feed userLogged={userLogged} userProfile={user}/>
       </div>
     </>
