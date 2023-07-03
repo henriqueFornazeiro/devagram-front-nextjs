@@ -109,3 +109,15 @@ strong{
     margin: 0px auto;
   }
 }
+
+.divideBorder{
+  margin: 0;
+  border: none;
+  background-color: $gray1;
+  height: 1px;
+  
+  @media screen and (min-width:$desktopBreakpoint) {
+    margin: 0 auto;                
+    width: 90%;
+  }
+}

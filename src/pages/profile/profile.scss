@@ -3,12 +3,6 @@
     .headerProfile{
         background-color: $white;
 
-        .headerProfileBorder{
-            margin: 0;
-            border: none;
-            background-color: $gray1;
-            height: 1px;
-        }
 
 
         .info{
@@ -76,12 +70,7 @@
                     display: none !important;
                 }
             }
-
-            .headerProfileBorder{
-                margin: 0 auto;                
-                width: 90%;
-            }
-
+            
             .info{
                 .avatar{
                     width: 90px;

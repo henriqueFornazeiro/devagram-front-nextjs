@@ -101,7 +101,7 @@ export default function HeaderProfile({
 
     return(
         <div className="headerProfile width30pctDesktop">
-            < HeaderAction 
+            <HeaderAction 
                 iconLeft={isProfileUserLogged ? null : iconChevronLeft} 
                 title={user.name} 
                 handleClick={handleClickLeft}
@@ -109,7 +109,8 @@ export default function HeaderProfile({
                     getElementLogout()
                 }
             /> 
-            <hr className="headerProfileBorder"/>
+            <hr className="divideBorder"/>
+
             <div className="info">
                 <Avatar src={user.avatar} />
                 <div className="infoContainer">

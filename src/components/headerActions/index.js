@@ -4,9 +4,10 @@ export default function HeaderAction({
     className, 
     iconLeft, 
     textLeft = null,
-    handleClick,
+    handleClickLeft,
     title,
-    rightElement
+    rightElement,
+    handleClickRight
     }){
     return(
         <div className={`${className} headerWithAction`}>
@@ -14,18 +15,18 @@ export default function HeaderAction({
                 <Image
                     src={iconLeft}
                     alt="icone de voltar no cabeçalho"
-                    onClick={handleClick}
+                    onClick={handleClickLeft}
                     width={25}
                     height={25}
                 />
             ):(
-                textLeft !== null && (<span className="headerWithActionTextLeft" onClick={handleClick}>{textLeft}</span>)
+                textLeft !== null && (<span className="headerWithActionTextLeft" onClick={handleClickLeft}>{textLeft}</span>)
             )}
             <h3>{title}</h3>
 
             {
                 rightElement && (
-                    <button type="buton" className="btnRightElement">{rightElement}</button>
+                    <button type="buton" className="btnRightElement" onClick={handleClickRight}>{rightElement}</button>
                 )
             }
         </div>
