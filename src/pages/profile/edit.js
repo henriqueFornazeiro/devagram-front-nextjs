@@ -3,23 +3,63 @@ import HeaderProfile from "@/components/headerProfile";
 import UploadImagem from "@/components/uploadImage";
 import withAuth from "@/hoc/withAuth";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import imgAvatarTemplate from "../../../public/images/avatar.svg"
 import iconClear from "../../../public/images/x-circle.svg"
 import Image from "next/image";
+import UserService from "@/services/UserService";
+import { validateName } from "@/utils/validators";
 
-function EditProfile(){
+const userService = new UserService();
+
+function EditProfile({userLogged}){
     const [avatar, setAvatar] =  useState();
     const [inputAvatar, setInputAvatar] = useState(null);
     const [name, setName] = useState("");
     const router = useRouter();
+
+    useEffect(()=>{
+        if(!userLogged){
+            return;
+        }
+        setName(userLogged.name);
+        setAvatar({preview: userLogged.avatar})
+    },[]);
 
     const handleClickCancel = () =>{
         router.push('/profile/me')
     }
 
     const openFileImg = () =>{
-        console.log("abrir seletor de arquivos")
+        inputAvatar?.click();
+    }
+
+    const updateProfile = async () =>{
+        try {
+            if(!validateName(name)){
+                alert("Nome precisa de pelo menos dois caracteres");
+                return;
+            }
+            
+            const payload = new FormData();
+            payload.append('name',name);
+
+            if(avatar.arquivo){
+                payload.append('file',avatar.arquivo)
+            }
+
+            await userService.updateUser(payload);
+            localStorage.setItem('name', name);
+
+            if(avatar.arquivo){
+                localStorage.setItem('avatar', avatar.preview);
+            }
+
+            router.push('/profile/me')
+
+        } catch (error) {
+            alert(`Erro ao editar perfil!`)
+        }
     }
 
     return (
@@ -30,7 +70,7 @@ function EditProfile(){
                     textLeft={'Cancelar'}
                     handleClickLeft={handleClickCancel}
                     rightElement={'Concluir'}
-                    handleClickRight={()=>console.log('clicou elemento direita')}
+                    handleClickRight={updateProfile}
                 />
                 <hr className="divideBorder"/>
 
@@ -57,7 +97,7 @@ function EditProfile(){
                         alt="icone de limpar o nome"
                         width={18}
                         height={18}
-                        onClick={() => setName('')}
+                        onClick={() => setName("")}
                     />
                 </div>
                 <hr className="divideBorder"/>

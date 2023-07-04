@@ -29,6 +29,10 @@ export default class UserService extends HttpService {
     return this.post("/create", data);
   }
 
+  async updateUser(data){
+    return this.put(`/user`,data)
+  }
+
   async search(searchParameter) {
     return this.get("/search?filter=" + searchParameter);
   }
