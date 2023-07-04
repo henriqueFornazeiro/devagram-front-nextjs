@@ -9,12 +9,32 @@
         flex: 1;
     }
 
+    .headerWithActionTextLeft{
+        font-size: 12px;
+        color: $gray3;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
     .btnRightElement{
         border: none;
         background-color: transparent;
         padding: 0;
         margin: 0;
         cursor: pointer;
+        color: $primaryColor2;
+        font-family: $fontBold;
+        font-size: 12px;
+    }
+
+    @media screen and (min-width:$desktopBreakpoint){
+        .headerWithActionTextLeft,.btnRightElement{
+            font-size: 14px;
+        }
+
+        
+    
     }
     
 }

@@ -70,7 +70,7 @@
                     display: none !important;
                 }
             }
-            
+
             .info{
                 .avatar{
                     width: 90px;
@@ -89,4 +89,76 @@
         
         
     }
+}
+
+.editProfilePage{
+    background-color: $white;
+
+    .editAvatar{
+        margin: 16px 0;
+        text-align: center;
+
+        .avatar{
+            width: 80px;
+            height: 80px;
+            margin-bottom: 6px;
+        }
+
+        > span{
+            font-size: 14px;
+            color: $primaryColor2;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    .inputEditName{
+        margin: 16px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding: 0px 26px;
+
+        label{
+            font-size: 14px;
+            color: $gray3;
+        }
+
+        input{
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0px 14px;
+            color: $gray4;
+
+        }
+    }
+
+    @media screen and (min-width:$desktopBreakpoint){
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+        .editProfilePageContent{
+            flex: 1;
+
+            .editAvatar{
+                .avatar{
+                    width: 120px;
+                    height: 120px;
+                }
+
+                >span{
+                    font-size: 14px;
+                }
+            }
+
+            
+
+        }
+
+
+    }
+
 }

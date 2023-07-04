@@ -39,6 +39,7 @@ function EditProfile(){
                         setImagem={setAvatar}
                         imagePreview={avatar?.preview || imgAvatarTemplate.src}
                         aoSetarAReferencia={setInputAvatar}
+                        imagemPreviewClassName="avatar"
                     />
 
                     <span onClick={openFileImg}>
@@ -56,7 +57,7 @@ function EditProfile(){
                         alt="icone de limpar o nome"
                         width={18}
                         height={18}
-                        onClick={() => setNome('')}
+                        onClick={() => setName('')}
                     />
                 </div>
                 <hr className="divideBorder"/>
