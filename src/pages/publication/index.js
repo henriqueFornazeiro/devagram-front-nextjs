@@ -12,8 +12,8 @@ function Publication() {
   return (
     <div className="publicationPage width30pctDesktop">
       <HeaderAction
-        textLeft="Cancelar"
-        rightElement="Avançar"
+        textLeft=""
+        rightElement=""
         title="Nova Publicação"
       />
       <hr className="divideBorder" />
@@ -23,7 +23,7 @@ function Publication() {
           <UploadImagem
             setImagem={setImage}
             aoSetarAReferencia={setInputImage}
-            imagemPreviewClassName={image ? "previewImagemPublicacao" : ""}
+            imagemPreviewClassName={!image ? "previewImagemPublicacao" : "previewImageSelected"}
             imagePreview={image?.preview || imgPublication.src}
           />
 
@@ -33,7 +33,8 @@ function Publication() {
 
           <Button
             text="Selecionar uma imagem"
-            handleClick={() => console.log("teste ok")}
+            handleClick={() => inputImage?.click()}
+            color="none"
           />
         </div>
       </div>
