@@ -15,10 +15,9 @@ export default function InputPublic({
                 <Image
                     src={image}
                     alt="input icon"
-                    className="inputPublicIcon"
+                    className="inputPublicIcon logo"
                     width={20}
                     height={20}
-                    className="logo"
                 />
                 <input 
                     type={type}
