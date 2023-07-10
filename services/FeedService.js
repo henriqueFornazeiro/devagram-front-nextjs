@@ -1,6 +1,6 @@
-import HttpService from "./HttpService";
+import DevagramApiService from "./DevagramApiService";
 
-export default class FeedService extends HttpService{
+export default class FeedService extends DevagramApiService{
     async loadPosts(userId){
         let url = '/feed';
 
