@@ -46,8 +46,10 @@ pnpm dev
 ### Desktop:
 </br>
 
-<div align="center"> <img src="./public/images/mockups/Device - Macbook Pro.png
-" width="500"> </div>
+<div align="center"> 
+    <img src="./public/images/mockups/Device - Macbook Pro.png" width="500"> 
+</div>
+
 </br>
 
 ### Mobile:
