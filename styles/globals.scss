@@ -5,7 +5,7 @@
 @import '../components/inputPublic/inputPublic.scss';
 @import '../components/layout/header.scss';
 @import '../components/layout/footer.scss';
-@import '../components/feed/feed.scss';
+@import '../../components/feed/feed.scss';
 @import '../components/headerActions/headerActions.scss';
 @import '../pages/profile/profile.scss';
 @import '../pages/publication/publication.scss';
@@ -27,7 +27,7 @@ html, body, #__next{
 body{
   @media screen and (min-width:$desktopBreakpoint){
     background-color: $gray5;
-    background-image: url('../../public/images/background-desktop.svg');
+    background-image: url('../public/images/background-desktop.svg');
   }
 }
 

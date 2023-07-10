@@ -1,10 +1,10 @@
 import Image from "next/image";
-import logoHorizontal from "../../../public/images/logo-horizontal.svg";
-import imgLupa from "../../../public/images/search.svg";
+import logoHorizontal from "../../public/images/logo-horizontal.svg";
+import imgLupa from "../../public/images/search.svg";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import SearchResult from "./SearchResult";
-import UserService from "@/services/UserService";
+import UserService from "../../services/UserService";
 import { useRouter } from "next/router";
 
 const userService = new UserService();

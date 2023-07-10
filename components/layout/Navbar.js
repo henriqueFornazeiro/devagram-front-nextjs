@@ -1,9 +1,9 @@
-import iconHome from "../../../public/images/home.svg";
-import iconHomeActive from "../../../public/images/home-active.svg";
-import iconUser from "../../../public/images/user-gray.svg";
-import iconUserActive from "../../../public/images/user.svg";
-import iconPlusPublication from "../../../public/images/plus-square.svg";
-import iconPlusPublicationActive from "../../../public/images/plus-square-active.svg";
+import iconHome from "../../public/images/home.svg";
+import iconHomeActive from "../../public/images/home-active.svg";
+import iconUser from "../../public/images/user-gray.svg";
+import iconUserActive from "../../public/images/user.svg";
+import iconPlusPublication from "../../public/images/plus-square.svg";
+import iconPlusPublicationActive from "../../public/images/plus-square-active.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";

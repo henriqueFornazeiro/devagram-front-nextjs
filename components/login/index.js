@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import InputPublic from "../inputPublic";
 import Button from "../button";
-import emailIcon from "../../../public/images/email.svg";
-import passIcon from "../../../public/images/key.svg";
-import logo from "../../../public/images/logo.svg";
+import emailIcon from "../../public/images/email.svg";
+import passIcon from "../../public/images/key.svg";
+import logo from "../../public/images/logo.svg";
 import { validateEmail, validatePass } from "../../utils/validators";
-import UserService from "@/services/UserService";
+import UserService from "../../services/UserService";
 
 const userService = new UserService();
 

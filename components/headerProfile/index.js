@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import HeaderAction from "../headerActions";
-import iconChevronLeft from '../../../public/images/chevron-left.svg'
-import iconLogout from '../../../public/images/log-out.svg'
+import iconChevronLeft from '../../public/images/chevron-left.svg'
+import iconLogout from '../../public/images/log-out.svg'
 import Avatar from "../avatar";
 import Button from "../button";
-import UserService from "@/services/UserService";
+import UserService from "../../services/UserService";
 
 const userService = new UserService();
 

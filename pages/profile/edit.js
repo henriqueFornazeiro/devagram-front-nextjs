@@ -1,14 +1,14 @@
-import HeaderAction from "@/components/headerActions";
-import HeaderProfile from "@/components/headerProfile";
-import UploadImagem from "@/components/uploadImage";
-import withAuth from "@/hoc/withAuth";
+import HeaderAction from "../../components/headerActions";
+import HeaderProfile from "../../components/headerProfile";
+import UploadImagem from "../../components/uploadImage";
+import withAuth from "../../hoc/withAuth";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import imgAvatarTemplate from "../../../public/images/avatar.svg"
-import iconClear from "../../../public/images/x-circle.svg"
+import imgAvatarTemplate from "../../public/images/avatar.svg"
+import iconClear from "../../public/images/x-circle.svg"
 import Image from "next/image";
-import UserService from "@/services/UserService";
-import { validateName } from "@/utils/validators";
+import UserService from "../../services/UserService";
+import { validateName } from "../../utils/validators";
 
 const userService = new UserService();
 

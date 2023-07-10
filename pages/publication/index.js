@@ -1,11 +1,11 @@
-import HeaderAction from "@/components/headerActions";
-import UploadImagem from "@/components/uploadImage";
-import imgPublication from "../../../public/images/img-preview-publication.svg";
-import icontChevronLeft from "../../../public/images/chevron-left.svg";
-import withAuth from "@/hoc/withAuth";
+import HeaderAction from "../../components/headerActions";
+import UploadImagem from "../../components/uploadImage";
+import imgPublication from "../../public/images/img-preview-publication.svg";
+import icontChevronLeft from "../../public/images/chevron-left.svg";
+import withAuth from "../../hoc/withAuth";
 import { useState } from "react";
-import Button from "@/components/button";
-import FeedService from "@/services/FeedService";
+import Button from "../../components/button";
+import FeedService from "../../services/FeedService";
 import { useRouter } from "next/router";
 
 const limitDescription = 255;

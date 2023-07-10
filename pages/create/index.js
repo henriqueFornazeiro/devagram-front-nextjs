@@ -1,21 +1,21 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import emailIcon from "../../../public/images/email.svg";
-import passIcon from "../../../public/images/key.svg";
-import userIcon from "../../../public/images/user.svg";
-import logo from "../../../public/images/logo.svg";
-import avatar from "../../../public/images/avatar.svg";
-import Button from "@/components/button";
-import InputPublic from "@/components/inputPublic";
-import UploadImage from "@/components/uploadImage";
+import emailIcon from "../../public/images/email.svg";
+import passIcon from "../../public/images/key.svg";
+import userIcon from "../../public/images/user.svg";
+import logo from "../../public/images/logo.svg";
+import avatar from "../../public/images/avatar.svg";
+import Button from "../../components/button";
+import InputPublic from "../../components/inputPublic";
+import UploadImage from "../../components/uploadImage";
 import {
   validateEmail,
   validatePass,
   validateName,
   validateConfirmPass,
 } from "../../utils/validators";
-import UserService from "@/services/UserService";
+import UserService from "../../services/UserService";
 import { useRouter } from "next/router";
 
 const userService = new UserService();

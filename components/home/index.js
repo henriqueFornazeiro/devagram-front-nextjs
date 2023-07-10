@@ -1,4 +1,4 @@
-import withAuth from "@/hoc/withAuth";
+import withAuth from "../../hoc/withAuth";
 import Feed from "../feed";
 
 function Home({userLogged}) {

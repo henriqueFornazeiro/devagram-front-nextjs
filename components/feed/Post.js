@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Avatar from "../avatar";
 import Image from "next/image";
-import iconLike from "../../../public/images/heart-outlined.svg";
-import iconLiked from "../../../public/images/heart-filled.svg";
-import iconComment from "../../../public/images/message-circle.svg";
-import iconCommentActive from "../../../public/images/message-circle-active.svg";
+import iconLike from "../../public/images/heart-outlined.svg";
+import iconLiked from "../../public/images/heart-filled.svg";
+import iconComment from "../../public/images/message-circle.svg";
+import iconCommentActive from "../../public/images/message-circle-active.svg";
 import { useState } from "react";
 import { Comment } from "./Comment";
-import FeedService from "@/services/FeedService";
+import FeedService from "../../services/FeedService";
 
 const tamanhoLimiteDescricao = 90;
 const feedService = new FeedService();

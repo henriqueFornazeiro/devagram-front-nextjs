@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "../components/login";
-import UserService from "@/services/UserService";
-import Home from "@/components/home";
+import UserService from "../services/UserService";
+import Home from "../components/home";
 
 const userService = new UserService();
 export default function Index() {

@@ -1,9 +1,9 @@
-import Feed from "@/components/feed";
-import withAuth from "@/hoc/withAuth";
+import Feed from "../../components/feed";
+import withAuth from "../../hoc/withAuth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import HeaderProfile from "@/components/headerProfile";
-import UserService from "@/services/UserService";
+import HeaderProfile from "../../components/headerProfile";
+import UserService from "../../services/UserService";
 
 const userService = new UserService();
 
