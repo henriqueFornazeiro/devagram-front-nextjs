@@ -5,12 +5,19 @@ import icontChevronLeft from "../../../public/images/chevron-left.svg";
 import withAuth from "@/hoc/withAuth";
 import { useState } from "react";
 import Button from "@/components/button";
+import FeedService from "@/services/FeedService";
+import { useRouter } from "next/router";
+
+const limitDescription = 255;
+const feedService = new FeedService();
 
 function Publication() {
   const [image, setImage] = useState();
   const [inputImage, setInputImage] = useState();
   const [stage, setStage] = useState(1);
   const [description, setDescription] = useState("");
+  const router = useRouter();
+
   const isStageOne = () => stage === 1;
 
   const getTextLeft = () => {
@@ -41,11 +48,16 @@ function Publication() {
         return
     }
 
-    setStage(1)
+    setStage(1);
   }
 
   const btnAdvance = () =>{
-    setStage(2);
+    if(isStageOne()){
+      setStage(2);
+      return;
+    }
+
+    publish();
   }
 
   const getClassNameHeader = () =>{
@@ -54,6 +66,33 @@ function Publication() {
     }
 
     return "secondStage"
+  }
+  
+
+  const publish = async () =>{
+    try {
+      if(!validateForm()){
+        alert("A descrição precisa ter mais de 3 caracteres e/ou a imagem precisa ser selecionada.")
+        return
+      }
+
+      const body = new FormData();
+      body.append('description', description);
+      body.append('file', image.arquivo)
+
+      await feedService.addPost(body);
+
+      router.push('/');
+
+    } catch (e) {
+      alert("Erro ao salvar publicação.");
+    }
+  }
+
+  const validateForm = () =>{    
+    return (
+      description.length >= 3 && image?.arquivo
+    )
   }
 
   return (

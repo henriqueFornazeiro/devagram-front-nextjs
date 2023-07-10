@@ -7,14 +7,18 @@ export default class FeedService extends HttpService{
         if(userId){
             url += `?id=${userId}`;
         }
-        return this.get(url)
+        return this.get(url);
     }
 
     async addComment(postId, comment){
-        return this.put(`/comment?id=${postId}`,{comment})
+        return this.put(`/comment?id=${postId}`,{comment});
     }
 
     async like(postId){
-        return this.put(`/like?id=${postId}`)
+        return this.put(`/like?id=${postId}`);
+    }
+
+    async addPost(payload){
+        return this.post(`/publication`, payload);
     }
 }

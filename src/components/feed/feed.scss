@@ -43,6 +43,7 @@
         .postFooter{
             padding: 5px 16px;
             color: $gray4;
+
             strong.postUser{
                 font-size: 12px;
                                
@@ -72,6 +73,11 @@
                         font-size: 10px;
                     }
                 }
+            }
+
+            .postComments{                
+                max-height: 70px;
+                overflow-y: auto;
             }
 
             
